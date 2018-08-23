@@ -11,10 +11,12 @@ import { FindListingsConnector } from '../modules/listing/find/FindListingsConne
 import { Logout } from '../modules/logout/index'
 import { ViewListingConnector } from '../modules/listing/view/ViewListingConnector'
 import MessageConnector from '../modules/listing/messages/MessageConnector'
+import { Home } from '../modules/home'
 
 export const Routes = () => (
   <BrowserRouter>
     <Switch>
+      <Route exact={true} path="/" component={Home} />
       <Route exact={true} path="/register" component={RegisterConnector} />
       <Route exact={true} path="/login" component={LoginConnector} />
       <Route
