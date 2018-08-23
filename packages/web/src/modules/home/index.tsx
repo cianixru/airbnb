@@ -5,8 +5,12 @@ export class Home extends React.PureComponent {
   render() {
     return (
       <div>
-        <Link to="/login">Login</Link>
-        <Link to="/register">Register</Link>
+        <div>
+          <Link to="/login">Login</Link>
+        </div>
+        <div>
+          <Link to="/register">Register</Link>
+        </div>
       </div>
     )
   }
