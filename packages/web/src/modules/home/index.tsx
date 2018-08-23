@@ -6,7 +6,7 @@ export class Home extends React.PureComponent {
     return (
       <div>
         <div>
-          <Link to="/login">Login</Link>
+          <Link to="/login">Login | </Link>
         </div>
         <div>
           <Link to="/register">Register</Link>
