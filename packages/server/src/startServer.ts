@@ -31,7 +31,11 @@ export const startServer = async () => {
   const schema = genSchema() as any
   applyMiddleware(schema, middleware)
 
-  const pubsub = new RedisPubSub()
+  const pubsub = new RedisPubSub(
+    process.env.NODE_ENV === 'production'
+      ? { connection: process.env.REDIS_URL as any }
+      : {}
+  )
 
   const server = new GraphQLServer({
     schema,
@@ -93,9 +97,12 @@ export const startServer = async () => {
     const conn = await createTypeormConn()
     await conn.runMigrations()
   }
+
+  const port = process.env.PORT || 4000
+
   const app = await server.start({
     cors,
-    port: process.env.NODE_ENV === 'test' ? 0 : 4000
+    port: process.env.NODE_ENV === 'test' ? 0 : port
   })
   console.log('Server is running on localhost:4000')
 

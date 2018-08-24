@@ -19,12 +19,12 @@
     "allowSyntheticDefaultImports": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "baseUrl": "./",
+    "baseUrl": "..",
     "paths": {
       "@airbnb/*": ["./*/src"]
     }
 
   },
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "**/*.test.ts", ],
   "include": ["./src/**/*.tsx", "./src/**/*.ts"]
 }
