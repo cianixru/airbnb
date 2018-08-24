@@ -35,7 +35,7 @@ export const sendEmail = async (
     }
 
     console.log('Message sent: %s', info.messageId)
-    console.log('Message: %s', message.text)
+    console.log('Message: %s', message.html)
     console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info))
   })
 }
