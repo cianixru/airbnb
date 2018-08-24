@@ -6,7 +6,7 @@ import { split } from 'apollo-link'
 import { getMainDefinition } from 'apollo-utilities'
 
 const httpLink = createUploadLink({
-  uri: 'http://localhost:4000',
+  uri: process.env.REACT_APP_SERVER_URL,
   credentials: 'include'
 })
 
