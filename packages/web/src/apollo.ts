@@ -6,12 +6,15 @@ import { split } from 'apollo-link'
 import { getMainDefinition } from 'apollo-utilities'
 
 const httpLink = createUploadLink({
-  uri: process.env.REACT_APP_SERVER_URL,
+  uri:
+    process.env.NODE_ENV === 'production'
+      ? `http://${process.env.REACT_APP_SERVER_URL}`
+      : process.env.REACT_APP_SERVER_URL,
   credentials: 'include'
 })
 
 const wsLink = new WebSocketLink({
-  uri: process.env.REACT_APP_SERVER_URL as string,
+  uri: `ws://${process.env.REACT_APP_SERVER_URL as string}`,
   options: {
     reconnect: true
   }
