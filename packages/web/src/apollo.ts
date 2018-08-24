@@ -9,7 +9,7 @@ const httpLink = createUploadLink({
   uri:
     process.env.NODE_ENV === 'production'
       ? `https://${process.env.REACT_APP_SERVER_URL}`
-      : process.env.REACT_APP_SERVER_URL,
+      : `http://${process.env.REACT_APP_SERVER_URL}`,
   credentials: 'include'
 })
 
