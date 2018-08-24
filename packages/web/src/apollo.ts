@@ -8,7 +8,7 @@ import { getMainDefinition } from 'apollo-utilities'
 const httpLink = createUploadLink({
   uri:
     process.env.NODE_ENV === 'production'
-      ? `http://${process.env.REACT_APP_SERVER_URL}`
+      ? `https://${process.env.REACT_APP_SERVER_URL}`
       : process.env.REACT_APP_SERVER_URL,
   credentials: 'include'
 })
