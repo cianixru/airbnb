@@ -73,6 +73,7 @@ export const startServer = async () => {
       secret: SESSION_SECRET,
       resave: false,
       saveUninitialized: false,
+      proxy: true,
       cookie: {
         httpOnly: true,
         secure: false,
