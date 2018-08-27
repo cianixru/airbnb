@@ -61,8 +61,6 @@ export const startServer = async () => {
     })
   )
 
-  server.express.set('trust proxy', 1)
-
   server.express.use(
     session({
       store: new RedisStore({
@@ -73,10 +71,9 @@ export const startServer = async () => {
       secret: SESSION_SECRET,
       resave: false,
       saveUninitialized: false,
-      proxy: true,
       cookie: {
         httpOnly: true,
-        secure: true,
+        secure: false,
         maxAge: 1000 * 60 * 60 * 24 * 7 // 7 days
       }
     } as any)
