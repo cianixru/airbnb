@@ -61,7 +61,7 @@ export const startServer = async () => {
     })
   )
 
-server.express.enable(‘trust proxy’)
+server.express.enable('trust proxy', 1)
 
   server.express.use(
     session({
