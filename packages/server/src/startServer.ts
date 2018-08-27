@@ -61,7 +61,7 @@ export const startServer = async () => {
     })
   )
 
-  server.express.enable('trust proxy')
+  server.express.set('trust proxy', 10)
 
   server.express.use(
     session({
@@ -76,7 +76,7 @@ export const startServer = async () => {
       proxy: true,
       cookie: {
         httpOnly: true,
-        secure: true,
+        secure: false,
         maxAge: 1000 * 60 * 60 * 24 * 7 // 7 days
       }
     } as any)
