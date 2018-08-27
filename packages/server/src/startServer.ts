@@ -61,8 +61,6 @@ export const startServer = async () => {
     })
   )
 
-server.set('trust proxy', 1)
-
   server.express.use(
     session({
       store: new RedisStore({
