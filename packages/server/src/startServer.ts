@@ -7,6 +7,7 @@ import * as RateLimitRedisStore from 'rate-limit-redis'
 import { applyMiddleware } from 'graphql-middleware'
 import * as express from 'express'
 import { RedisPubSub } from 'graphql-redis-subscriptions'
+import sslRedirect from 'heroku-ssl-redirect'
 
 import { redis } from './redis'
 import { createTypeormConn } from './utils/createTypeormConn'
@@ -50,6 +51,8 @@ export const startServer = async () => {
     })
   })
 
+  server.express.use(sslRedirect())
+
   server.express.enable('trust proxy')
 
   server.express.use(
@@ -62,8 +65,6 @@ export const startServer = async () => {
       delayMs: 0 // disable delaying - full speed until the max limit is reached
     })
   )
-
-  server.express.set('trust proxy', 10)
 
   server.express.use(
     session({
