@@ -1,39 +1,43 @@
-import React from 'react'
-import { RouteComponentProps } from 'react-router-dom'
-import { ViewMessages } from '@airbnb/controller'
-import InputBar from './InputBar'
+import * as React from "react";
+import { RouteComponentProps } from "react-router-dom";
+import { ViewMessages } from "@airbnb/controller";
+import { InputBar } from "./InputBar";
 
-export default class MessageConnector extends React.PureComponent<
-  RouteComponentProps<{ listingId: string }>
+export class MessageConnector extends React.PureComponent<
+  RouteComponentProps<{
+    listingId: string;
+  }>
 > {
-  unsubscribe: () => void
+  unsubscribe: () => void;
 
   render() {
     const {
       match: {
         params: { listingId }
       }
-    } = this.props
-
+    } = this.props;
     return (
       <ViewMessages listingId={listingId}>
         {({ loading, messages, subscribe }) => {
           if (loading) {
-            return <div>...loading</div>
+            return <div>...loading</div>;
           }
+
           if (!this.unsubscribe) {
-            this.unsubscribe = subscribe()
+            this.unsubscribe = subscribe();
           }
+
           return (
             <div>
               {messages.map((m, i) => (
                 <div key={`${i}-lm`}>{m.text}</div>
               ))}
               <InputBar listingId={listingId} />
+              <button onClick={this.unsubscribe}>unsubscribe</button>
             </div>
-          )
+          );
         }}
       </ViewMessages>
-    )
+    );
   }
 }

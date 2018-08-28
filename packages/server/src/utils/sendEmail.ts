@@ -1,41 +1,45 @@
-import * as nodemailer from 'nodemailer'
+import * as nodemailer from "nodemailer";
 
 export const sendEmail = async (
   recipient: string,
   url: string,
   linkText: string
 ) => {
-  const transporter = nodemailer.createTransport({
-    host: 'smtp.ethereal.email',
-    port: 587,
-    auth: {
-      user: process.env.NODEMAILER_USER,
-      pass: process.env.NODEMAILER_PASSWORD
-    },
-    tls: { rejectUnauthorized: false }
-  })
-
-  const message = {
-    from: 'Sender Name <sender@example.com>',
-    to: `Recipient <${recipient}>`,
-    subject: 'Confirm Account',
-    text: 'Please click the link below to confirm your account',
-    html: `
-          <html>
-            <body>
-            <a href="${url}">${linkText}</a>
-            </body>
-          </html>
-          `
-  }
-
-  transporter.sendMail(message, (err, info) => {
-    if (err) {
-      console.log('Error occurred. ' + err.message)
+  nodemailer.createTestAccount((err1, account) => {
+    if (err1) {
+      console.log(err1);
     }
+    const transporter = nodemailer.createTransport({
+      host: account.smtp.host,
+      port: account.smtp.port,
+      secure: account.smtp.secure,
+      auth: {
+        user: account.user,
+        pass: account.pass
+      }
+    });
 
-    console.log('Message sent: %s', info.messageId)
-    console.log('Message: %s', message.html)
-    console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info))
-  })
-}
+    const message = {
+      from: "Sender Name <sender@example.com>",
+      to: `Recipient <${recipient}>`,
+      subject: "Nodemailer is unicode friendly ✔",
+      text: "Hello to myself!",
+      html: `<html>
+        <body>
+        <p>Testing SparkPost - the world's most awesomest email service!</p>
+        <a href="${url}">${linkText}</a>
+        </body>
+        </html>`
+    };
+
+    transporter.sendMail(message, (err, info) => {
+      if (err) {
+        console.log("Error occurred. " + err.message);
+      }
+
+      console.log("Message sent: %s", info.messageId);
+      // Preview only available when sending through an Ethereal account
+      console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+    });
+  });
+};

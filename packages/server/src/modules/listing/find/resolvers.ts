@@ -1,5 +1,5 @@
-import { ResolverMap } from '../../../types/graphql-utils'
-import { Listing } from '../../../entity/Listing'
+import { ResolverMap } from "../../../types/graphql-utils";
+import { Listing } from "../../../entity/Listing";
 
 export const resolvers: ResolverMap = {
   Listing: {
@@ -9,7 +9,7 @@ export const resolvers: ResolverMap = {
   },
   Query: {
     findListings: async () => {
-      return Listing.find()
+      return Listing.find();
     }
   }
-}
+};

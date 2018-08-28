@@ -1,5 +1,5 @@
-import { ResolverMap } from '../../../types/graphql-utils'
-import { Message } from '../../../entity/Message'
+import { ResolverMap } from "../../../types/graphql-utils";
+import { Message } from "../../../entity/Message";
 
 export const resolvers: ResolverMap = {
   Message: {
@@ -12,7 +12,7 @@ export const resolvers: ResolverMap = {
           listingId,
           userId: session.userId
         }
-      })
+      });
     }
   }
-}
+};

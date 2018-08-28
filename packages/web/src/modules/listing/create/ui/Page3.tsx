@@ -1,24 +1,25 @@
-import * as React from 'react'
-import { Field } from 'formik'
-import { InputField } from '../../../shared/InputField'
-import { TagField } from '../../../shared/TagField'
+import * as React from "react";
+import { Field } from "formik";
+
+import { InputField } from "../../../../modules/shared/InputField";
+import { TagField } from "../../../shared/TagField";
 
 export const Page3 = () => (
   <>
     <Field
-      name="latitude"
       label="Latitude"
+      name="latitude"
       placeholder="Latitude"
-      useNumberComponent={true}
       component={InputField}
+      useNumberComponent={true}
     />
     <Field
+      label="Longtitude"
       name="longitude"
-      label="Longitude"
       placeholder="Longitude"
-      useNumberComponent={true}
       component={InputField}
+      useNumberComponent={true}
     />
     <Field name="amenities" placeholder="Amenities" component={TagField} />
   </>
-)
+);

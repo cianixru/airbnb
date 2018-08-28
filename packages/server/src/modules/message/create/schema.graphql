@@ -4,5 +4,5 @@ input MessageInput {
 }
 
 type Mutation {
-  createMessage(message: MessageInput): Boolean!
+  createMessage(message: MessageInput!): Boolean!
 }

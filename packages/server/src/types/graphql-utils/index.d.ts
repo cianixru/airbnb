@@ -1,7 +1,6 @@
 import { Redis } from 'ioredis'
 import { userLoader } from '../../loaders/UserLoader'
-import express from 'express'
-import * as expressSession from 'express-session'
+import * as express from 'express'
 import { PubSub } from 'graphql-yoga'
 
 export interface Session extends Express.Session {

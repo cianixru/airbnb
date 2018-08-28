@@ -1,39 +1,40 @@
-import * as React from 'react'
-import { Form as AntForm, Icon, Button } from 'antd'
-import { withFormik, FormikProps, Field, Form } from 'formik'
-import { InputField } from '../../shared/InputField'
+import * as React from "react";
+import { Form as AntForm, Icon, Button } from "antd";
+import { withFormik, FormikProps, Field, Form } from "formik";
 import {
   NormalizedErrorMap,
   ForgotPasswordChangeMutationVariables
-} from '@airbnb/controller'
-import { changePasswordSchema } from '@airbnb/common'
+} from "@airbnb/controller";
+import { changePasswordSchema } from "@airbnb/common";
 
-const FormItem = AntForm.Item
+import { InputField } from "../../shared/InputField";
+
+const FormItem = AntForm.Item;
 
 interface FormValues {
-  newPassword: string
+  newPassword: string;
 }
 
 interface Props {
-  onFinish: () => void
-  token: string
+  onFinish: () => void;
+  token: string;
   submit: (
     values: ForgotPasswordChangeMutationVariables
-  ) => Promise<NormalizedErrorMap | null>
+  ) => Promise<NormalizedErrorMap | null>;
 }
 
 class C extends React.PureComponent<FormikProps<FormValues> & Props> {
   render() {
     return (
-      <Form style={{ display: 'flex' }}>
-        <div style={{ width: 400, margin: 'auto' }}>
+      <Form style={{ display: "flex" }}>
+        <div style={{ width: 400, margin: "auto" }}>
           <Field
             name="newPassword"
-            prefix={
-              <Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} /> as any
-            }
             type="password"
             placeholder="New Password"
+            prefix={
+              <Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} /> as any
+            }
             component={InputField}
           />
           <FormItem>
@@ -42,24 +43,24 @@ class C extends React.PureComponent<FormikProps<FormValues> & Props> {
               htmlType="submit"
               className="login-form-button"
             >
-              Change Password
+              change password
             </Button>
           </FormItem>
         </div>
       </Form>
-    )
+    );
   }
 }
 
 export const ChangePasswordView = withFormik<Props, FormValues>({
   validationSchema: changePasswordSchema,
-  mapPropsToValues: () => ({ newPassword: '' }),
+  mapPropsToValues: () => ({ newPassword: "" }),
   handleSubmit: async ({ newPassword }, { props, setErrors }) => {
-    const errors = await props.submit({ newPassword, key: props.token })
+    const errors = await props.submit({ newPassword, key: props.token });
     if (errors) {
-      setErrors(errors)
+      setErrors(errors);
     } else {
-      props.onFinish()
+      props.onFinish();
     }
   }
-})(C)
+})(C);

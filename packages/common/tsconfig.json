@@ -20,7 +20,7 @@
     "skipLibCheck": true,
     "baseUrl": "..",
     "paths": {
-      "@abb/*": ["./*/src"]
+      "@airbnb/*": ["./*/src"]
     }
   },
   "exclude": ["node_modules"],

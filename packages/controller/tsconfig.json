@@ -16,18 +16,12 @@
     "suppressImplicitAnyIndexErrors": true,
     "allowSyntheticDefaultImports": true,
     "noUnusedLocals": true,
-    "types": [
-      "jest",
-      "node",
-      "react",
-      "react-dom",
-      "react-router-dom"
-    ],
+    "types": ["jest", "node", "react", "react-dom", "react-router-dom"],
     "skipLibCheck": true,
     "declaration": true,
     "baseUrl": "..",
     "paths": {
-      "@abb/*": ["./*/src"]
+      "@airbnb/*": ["./*/src"]
     }
   },
   "exclude": [

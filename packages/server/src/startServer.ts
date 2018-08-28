@@ -1,4 +1,5 @@
 import 'reflect-metadata'
+// tslint:disable-next-line:no-var-requires
 import { GraphQLServer } from 'graphql-yoga'
 import * as session from 'express-session'
 import * as connectRedis from 'connect-redis'
@@ -7,7 +8,6 @@ import * as RateLimitRedisStore from 'rate-limit-redis'
 import { applyMiddleware } from 'graphql-middleware'
 import * as express from 'express'
 import { RedisPubSub } from 'graphql-redis-subscriptions'
-import * as enforce from 'express-sslify'
 
 import { redis } from './redis'
 import { createTypeormConn } from './utils/createTypeormConn'
@@ -15,11 +15,9 @@ import { confirmEmail } from './routes/confirmEmail'
 import { genSchema } from './utils/genSchema'
 import { redisSessionPrefix } from './constants'
 import { createTestConn } from './testUtils/createTestConn'
+// import { middlewareShield } from "./shield";
 import { middleware } from './middleware'
 import { userLoader } from './loaders/UserLoader'
-
-// tslint:disable-next-line:no-var-requires
-require('dotenv').config()
 
 const SESSION_SECRET = 'ajslkjalksjdfkl'
 const RedisStore = connectRedis(session as any)
@@ -32,11 +30,7 @@ export const startServer = async () => {
   const schema = genSchema() as any
   applyMiddleware(schema, middleware)
 
-  const pubsub = new RedisPubSub(
-    process.env.NODE_ENV === 'production'
-      ? { connection: process.env.REDIS_URL as any }
-      : {}
-  )
+  const pubsub = new RedisPubSub()
 
   const server = new GraphQLServer({
     schema,
@@ -50,8 +44,6 @@ export const startServer = async () => {
       pubsub
     })
   })
-
-  server.express.use(enforce.HTTPS({ trustProtoHeader: true }))
 
   server.express.use(
     new RateLimit({
@@ -76,7 +68,7 @@ export const startServer = async () => {
       saveUninitialized: false,
       cookie: {
         httpOnly: true,
-        secure: true,
+        secure: process.env.NODE_ENV === 'production',
         maxAge: 1000 * 60 * 60 * 24 * 7 // 7 days
       }
     } as any)
@@ -97,12 +89,11 @@ export const startServer = async () => {
   if (process.env.NODE_ENV === 'test') {
     await createTestConn(true)
   } else {
-    const conn = await createTypeormConn()
-    await conn.runMigrations()
+    await createTypeormConn()
+    // await conn.runMigrations();
   }
 
   const port = process.env.PORT || 4000
-
   const app = await server.start({
     cors,
     port: process.env.NODE_ENV === 'test' ? 0 : port

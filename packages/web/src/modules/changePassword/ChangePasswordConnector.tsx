@@ -1,20 +1,25 @@
-import * as React from 'react'
-import { RouteComponentProps } from 'react-router-dom'
-import { ChangePasswordView } from './ui/ChangePasswordView'
-import { ChangePasswordController } from '@airbnb/controller'
+import * as React from "react";
+import { RouteComponentProps } from "react-router-dom";
+import { ChangePasswordController } from "@airbnb/controller";
+
+import { ChangePasswordView } from "./ui/ChangePasswordView";
 
 export class ChangePasswordConnector extends React.PureComponent<
-  RouteComponentProps<{ key: string }>
+  RouteComponentProps<{
+    key: string;
+  }>
 > {
   onFinish = () => {
-    this.props.history.push('/login')
-  }
+    this.props.history.push("/login");
+  };
+
   render() {
     const {
       match: {
         params: { key }
       }
-    } = this.props
+    } = this.props;
+    console.log(key);
     return (
       <ChangePasswordController>
         {({ submit }) => (
@@ -25,6 +30,6 @@ export class ChangePasswordConnector extends React.PureComponent<
           />
         )}
       </ChangePasswordController>
-    )
+    );
   }
 }

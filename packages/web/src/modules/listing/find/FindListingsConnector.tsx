@@ -1,13 +1,13 @@
-import React from 'react'
-import { Card } from 'antd'
-import { withFindListings, WithFindListings } from '@airbnb/controller'
-import { Link } from 'react-router-dom'
+import * as React from "react";
+import { Card } from "antd";
+import { withFindListings, WithFindListings } from "@airbnb/controller";
+import { Link } from "react-router-dom";
 
-const { Meta } = Card
+const { Meta } = Card;
 
-export class C extends React.PureComponent<WithFindListings> {
+class C extends React.PureComponent<WithFindListings> {
   render() {
-    const { listings, loading } = this.props
+    const { listings, loading } = this.props;
     return (
       <div>
         {loading && <div>...loading</div>}
@@ -16,16 +16,16 @@ export class C extends React.PureComponent<WithFindListings> {
             key={`${l.id}-card`}
             hoverable={true}
             style={{ width: 240 }}
-            cover={l.pictureUrl && <img alt="" src={l.pictureUrl} />}
+            cover={l.pictureUrl && <img alt="example" src={l.pictureUrl} />}
           >
             <Link to={`/listing/${l.id}`}>
-              <Meta title={l.name} description={l.description} />
+              <Meta title={l.name} description={l.owner.email} />
             </Link>
           </Card>
         ))}
       </div>
-    )
+    );
   }
 }
 
-export const FindListingsConnector = withFindListings(C)
+export const FindListingsConnector = withFindListings(C);

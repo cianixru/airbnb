@@ -1,24 +1,24 @@
-import * as React from 'react'
-import { Formik, Form, Field } from 'formik'
-import { CreateMessage } from '@airbnb/controller'
-import { InputField } from '../../shared/InputField'
+import * as React from "react";
+import { Formik, Form, Field } from "formik";
+import { CreateMessage } from "@airbnb/controller";
+import { InputField } from "../../shared/InputField";
 
 interface FormValues {
-  text: string
+  text: string;
 }
 
 interface Props {
-  listingId: string
+  listingId: string;
 }
 
-export default class InputBar extends React.PureComponent<Props> {
+export class InputBar extends React.PureComponent<Props> {
   render() {
-    const { listingId } = this.props
+    const { listingId } = this.props;
     return (
       <CreateMessage>
         {({ createMessage }) => (
           <Formik<{}, FormValues>
-            initialValues={{ text: '' }}
+            initialValues={{ text: "" }}
             onSubmit={async ({ text }, { resetForm }) => {
               await createMessage({
                 variables: {
@@ -27,19 +27,19 @@ export default class InputBar extends React.PureComponent<Props> {
                     listingId
                   }
                 }
-              })
-              resetForm()
+              });
+              resetForm();
             }}
           >
             {() => (
               <Form>
                 <Field name="text" component={InputField} />
-                <button type="submit">Send Message</button>
+                <button type="submit">send message</button>
               </Form>
             )}
           </Formik>
         )}
       </CreateMessage>
-    )
+    );
   }
 }

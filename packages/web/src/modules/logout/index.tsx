@@ -1,12 +1,13 @@
-import React from 'react'
-import { LogoutController } from '@airbnb/controller'
-import { CallLogout } from './CallLogout'
-import { RouteComponentProps } from 'react-router-dom'
+import * as React from "react";
+import { LogoutController } from "@airbnb/controller";
+import { RouteComponentProps } from "react-router-dom";
+
+import { CallLogout } from "./CallLogout";
 
 export class Logout extends React.PureComponent<RouteComponentProps<{}>> {
   onFinish = () => {
-    this.props.history.push('/login')
-  }
+    this.props.history.push("/login");
+  };
 
   render() {
     return (
@@ -15,6 +16,6 @@ export class Logout extends React.PureComponent<RouteComponentProps<{}>> {
           <CallLogout logout={logout} onFinish={this.onFinish} />
         )}
       </LogoutController>
-    )
+    );
   }
 }

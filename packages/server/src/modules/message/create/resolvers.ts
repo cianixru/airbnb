@@ -1,6 +1,6 @@
-import { ResolverMap } from '../../../types/graphql-utils'
-import { Message } from '../../../entity/Message'
-import { PUBSUB_NEW_MESSAGE } from '../shared/constants'
+import { ResolverMap } from "../../../types/graphql-utils";
+import { Message } from "../../../entity/Message";
+import { PUBSUB_NEW_MESSAGE } from "../shared/constants";
 
 export const resolvers: ResolverMap = {
   Mutation: {
@@ -8,13 +8,13 @@ export const resolvers: ResolverMap = {
       const dbMessage = await Message.create({
         ...message,
         userId: session.userId
-      }).save()
+      }).save();
 
       pubsub.publish(PUBSUB_NEW_MESSAGE, {
         newMessage: dbMessage
-      })
+      });
 
-      return true
+      return true;
     }
   }
-}
+};
