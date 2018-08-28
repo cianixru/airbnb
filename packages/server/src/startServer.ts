@@ -7,7 +7,7 @@ import * as RateLimitRedisStore from 'rate-limit-redis'
 import { applyMiddleware } from 'graphql-middleware'
 import * as express from 'express'
 import { RedisPubSub } from 'graphql-redis-subscriptions'
-import enforce from 'express-sslify'
+import * as enforce from 'express-sslify'
 
 import { redis } from './redis'
 import { createTypeormConn } from './utils/createTypeormConn'
