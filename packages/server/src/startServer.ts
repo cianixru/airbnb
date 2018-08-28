@@ -50,6 +50,8 @@ export const startServer = async () => {
     })
   })
 
+  server.express.enable('trust proxy')
+
   server.express.use(
     new RateLimit({
       store: new RateLimitRedisStore({
