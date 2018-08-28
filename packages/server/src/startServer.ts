@@ -64,11 +64,11 @@ export const startServer = async () => {
       }),
       name: 'qid',
       secret: SESSION_SECRET,
-      resave: false,
+      resave: true,
       saveUninitialized: false,
       cookie: {
         httpOnly: true,
-        secure: false,
+        secure: true,
         maxAge: 1000 * 60 * 60 * 24 * 7 // 7 days
       }
     } as any)
