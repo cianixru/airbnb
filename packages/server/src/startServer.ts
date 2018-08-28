@@ -7,7 +7,7 @@ import * as RateLimitRedisStore from 'rate-limit-redis'
 import { applyMiddleware } from 'graphql-middleware'
 import * as express from 'express'
 import { RedisPubSub } from 'graphql-redis-subscriptions'
-import sslRedirect from 'heroku-ssl-redirect'
+import enforce from 'express-sslify'
 
 import { redis } from './redis'
 import { createTypeormConn } from './utils/createTypeormConn'
@@ -51,9 +51,7 @@ export const startServer = async () => {
     })
   })
 
-  server.express.use(sslRedirect())
-
-  server.express.enable('trust proxy')
+  server.express.use(enforce.HTTPS({ trustProtoHeader: true }))
 
   server.express.use(
     new RateLimit({
@@ -76,7 +74,6 @@ export const startServer = async () => {
       secret: SESSION_SECRET,
       resave: false,
       saveUninitialized: false,
-      proxy: true,
       cookie: {
         httpOnly: true,
         secure: true,

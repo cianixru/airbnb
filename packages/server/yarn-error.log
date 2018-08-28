@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/Cellar/node/10.9.0/bin/node /usr/local/Cellar/yarn/1.9.4/libexec/bin/yarn.js add -D @types/heroku-ssl-redirect
+  /usr/local/Cellar/node/10.9.0/bin/node /usr/local/Cellar/yarn/1.9.4/libexec/bin/yarn.js add -D @types/express-sslify
 
 PATH: 
   /usr/local/opt/llvm/bin:/usr/local/sbin:/Users/development/.yarn/bin:/Users/development/.rvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2fheroku-ssl-redirect: Not found
+  Error: https://registry.yarnpkg.com/@types%2fexpress-sslify: Not found
       at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.9.4/libexec/lib/cli.js:64202:18)
       at Request.self.callback (/usr/local/Cellar/yarn/1.9.4/libexec/lib/cli.js:137468:22)
       at Request.emit (events.js:182:13)
@@ -52,6 +52,7 @@ npm manifest:
       "@types/ws": "^5.1.2",
       "@types/yup": "^0.24.3",
       "copyfiles": "^2.0.0",
+      "express-sslify": "^1.2.0",
       "gql2ts": "^1.8.2",
       "jest": "^23.5.0",
       "nodemon": "^1.17.3",
@@ -75,6 +76,7 @@ npm manifest:
       "express": "^4.16.3",
       "express-rate-limit": "^3.0.2",
       "express-session": "^1.15.6",
+      "express-sslify": "^1.2.0",
       "faker": "^4.1.0",
       "glob": "^7.1.2",
       "graphql": "^0.13.2",
@@ -5748,6 +5750,10 @@ Lockfile:
       parseurl "~1.3.2"
       uid-safe "~2.1.5"
       utils-merge "1.0.1"
+  
+  express-sslify@^1.2.0:
+    version "1.2.0"
+    resolved "https://registry.yarnpkg.com/express-sslify/-/express-sslify-1.2.0.tgz#30e84bceed1557eb187672bbe1430a0a2a100d9c"
   
   express@^4.13.3, express@^4.16.3:
     version "4.16.3"
