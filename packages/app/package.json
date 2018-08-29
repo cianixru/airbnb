@@ -7,7 +7,7 @@
     "@airbnb/common": "1.0.0",
     "@airbnb/controller": "1.0.0",
     "apollo-cache-inmemory": "^1.2.8",
-    "apollo-client": "^2.4.0",
+    "apollo-client": "^2.4.1",
     "apollo-link-http": "^1.5.4",
     "apollo-upload-client": "^8.1.0",
     "expo": "^29.0.0",

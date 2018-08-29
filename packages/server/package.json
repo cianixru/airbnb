@@ -55,7 +55,7 @@
     "graphql-redis-subscriptions": "^1.5.0",
     "graphql-shield": "^2.2.7",
     "graphql-tools": "^3.1.1",
-    "graphql-yoga": "^1.16.1",
+    "graphql-yoga": "^1.16.2",
     "heroku-ssl-redirect": "^0.0.4",
     "ioredis": "^4.0.0",
     "merge-graphql-schemas": "^1.5.1",
