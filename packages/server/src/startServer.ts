@@ -81,7 +81,8 @@ export const startServer = async () => {
     origin:
       process.env.NODE_ENV === 'test'
         ? '*'
-        : (process.env.FRONTEND_HOST as string)
+        : (process.env.FRONTEND_HOST as string),
+    preflightContinue: true
   }
 
   server.express.get('/confirm/:id', confirmEmail)
