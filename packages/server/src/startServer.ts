@@ -67,7 +67,10 @@ export const startServer = async () => {
       resave: false,
       saveUninitialized: false,
       cookie: {
+        path: '/',
         httpOnly: false,
+        expires: true,
+        domain: process.env.FRONTEND_URL,
         secure: false,
         maxAge: 1000 * 60 * 60 * 24 * 7 // 7 days
       }
