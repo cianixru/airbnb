@@ -10,7 +10,7 @@ const httpLink = createUploadLink({
     process.env.NODE_ENV === 'production'
       ? `https://${process.env.REACT_APP_SERVER_URL}`
       : `http://${process.env.REACT_APP_SERVER_URL}`,
-  credentials: 'same-origin'
+  credentials: 'include'
 })
 
 // Create a WebSocket link:
