@@ -9,7 +9,7 @@ const httpLink = createUploadLink({
   uri:
     process.env.NODE_ENV === 'production'
       ? `https://${process.env.REACT_APP_SERVER_URL}`
-      : `http://${process.env.REACT_APP_SERVER_URL}`,
+      : `http://localhost:4000`,
   credentials: 'include'
 })
 
@@ -18,7 +18,7 @@ const wsLink = new WebSocketLink({
   uri:
     process.env.NODE_ENV === 'production'
       ? `wss://${process.env.REACT_APP_SERVER_URL}`
-      : `ws://${process.env.REACT_APP_SERVER_URL}`,
+      : `ws://localhost:4000`,
   options: {
     reconnect: true
   }

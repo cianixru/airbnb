@@ -19,6 +19,9 @@ import { createTestConn } from './testUtils/createTestConn'
 import { middleware } from './middleware'
 import { userLoader } from './loaders/UserLoader'
 
+// tslint:disable-next-line:no-var-requires
+require('dotenv').config()
+
 const SESSION_SECRET = 'ajslkjalksjdfkl'
 const RedisStore = connectRedis(session as any)
 
@@ -67,10 +70,7 @@ export const startServer = async () => {
       resave: false,
       saveUninitialized: false,
       cookie: {
-        path: '/',
         httpOnly: false,
-        expires: true,
-        domain: process.env.FRONTEND_URL,
         secure: false,
         maxAge: 1000 * 60 * 60 * 24 * 7 // 7 days
       }
@@ -81,11 +81,7 @@ export const startServer = async () => {
 
   const cors = {
     credentials: true,
-    origin:
-      process.env.NODE_ENV === 'test'
-        ? '*'
-        : (process.env.FRONTEND_HOST as string),
-    preflightContinue: true
+    origin: process.env.NODE_ENV === 'test' ? '*' : process.env.FRONTEND_HOST
   }
 
   server.express.get('/confirm/:id', confirmEmail)

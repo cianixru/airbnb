@@ -61,7 +61,7 @@ class C extends React.PureComponent<
 
   render() {
     return (
-      <Formik<{}, FormValues>
+      <Formik<FormValues>
         initialValues={{
           picture: null,
           name: "",
