@@ -50,4 +50,4 @@ export const RegisterController: React.ComponentClass<Props> = graphql<
   Props,
   RegisterMutation,
   RegisterMutationVariables
->(registerMutation)(C)
+>(registerMutation)(C) as any

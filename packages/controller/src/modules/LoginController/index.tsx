@@ -72,4 +72,4 @@ export const LoginController: React.ComponentClass<Props> = graphql<
   Props,
   LoginMutation,
   LoginMutationVariables
->(loginMutation)(withApollo<Props>(C))
+>(loginMutation)(withApollo<Props>(C)) as any

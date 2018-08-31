@@ -61,4 +61,4 @@ export const ChangePasswordController: React.ComponentClass<Props> = graphql<
   Props,
   ForgotPasswordChangeMutation,
   ForgotPasswordChangeMutationVariables
->(forgotPasswordChangeMutation)(C)
+>(forgotPasswordChangeMutation)(C) as any
