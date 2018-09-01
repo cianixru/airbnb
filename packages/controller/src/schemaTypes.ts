@@ -88,7 +88,7 @@ export interface FindListingsQuery_findListings_owner {
 export interface FindListingsQuery_findListings {
   id: string;
   name: string;
-  pictureUrl: string;
+  pictureUrl: string | null;
   description: string;
   owner: FindListingsQuery_findListings_owner;
 }
@@ -174,6 +174,22 @@ export interface RegisterMutationVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: UpdateListingMutation
+// ====================================================
+
+export interface UpdateListingMutation {
+  updateListing: boolean;
+}
+
+export interface UpdateListingMutationVariables {
+  listingId: string;
+  input: UpdateListingInput;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL query operation: ViewListingQuery
 // ====================================================
 
@@ -186,8 +202,14 @@ export interface ViewListingQuery_viewListing {
   id: string;
   name: string;
   category: string;
-  pictureUrl: string;
   description: string;
+  price: number;
+  beds: number;
+  guests: number;
+  latitude: number;
+  longitude: number;
+  amenities: string[];
+  pictureUrl: string | null;
   owner: ViewListingQuery_viewListing_owner;
 }
 
@@ -261,6 +283,20 @@ export interface NewMessageSubscriptionVariables {
 export interface MessageInput {
   text: string;
   listingId: string;
+}
+
+export interface UpdateListingInput {
+  name?: string | null;
+  picture?: any | null;
+  pictureUrl?: string | null;
+  category?: string | null;
+  description?: string | null;
+  price?: number | null;
+  beds?: number | null;
+  guests: number;
+  latitude?: number | null;
+  longitude?: number | null;
+  amenities?: string[] | null;
 }
 
 //==============================================================

@@ -13,11 +13,12 @@ import { redis } from './redis'
 import { createTypeormConn } from './utils/createTypeormConn'
 import { confirmEmail } from './routes/confirmEmail'
 import { genSchema } from './utils/genSchema'
-import { redisSessionPrefix } from './constants'
+import { redisSessionPrefix, listingCacheKey } from './constants'
 import { createTestConn } from './testUtils/createTestConn'
 // import { middlewareShield } from "./shield";
 import { middleware } from './middleware'
 import { userLoader } from './loaders/UserLoader'
+import { Listing } from './entity/Listing'
 
 // tslint:disable-next-line:no-var-requires
 require('dotenv').config()
@@ -92,6 +93,12 @@ export const startServer = async () => {
     await createTypeormConn()
     // await conn.runMigrations();
   }
+
+  await redis.del(listingCacheKey)
+  const listings = await Listing.find()
+  const listingStrings = listings.map(x => JSON.stringify(x))
+
+  await redis.lpush(listingCacheKey, ...listingStrings)
 
   const port = process.env.PORT || 4000
   const app = await server.start({

@@ -1,18 +1,19 @@
-import * as React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { AuthRoute } from "@airbnb/controller";
+import * as React from 'react'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { AuthRoute } from '@airbnb/controller'
 
-import { RegisterConnector } from "../modules/register/RegisterConnector";
-import { LoginConnector } from "../modules/login/LoginConnector";
-import { ForgotPasswordConnector } from "../modules/forgotPassword/ForgotPasswordConnector";
-import { ChangePasswordConnector } from "../modules/changePassword/ChangePasswordConnector";
-import { TextPage } from "../modules/TextPage";
-import { DemoDelete } from "../modules/listing/delete/DemoDelete";
-import { CreateListingConnector } from "../modules/listing/create/CreateListingConnector";
-import { FindListingsConnector } from "../modules/listing/find/FindListingsConnector";
-import { Logout } from "../modules/logout";
-import { ViewListingConnector } from "../modules/listing/view/ViewListingConnector";
-import { MessageConnector } from "../modules/listing/messages/MessageConnector";
+import { RegisterConnector } from '../modules/register/RegisterConnector'
+import { LoginConnector } from '../modules/login/LoginConnector'
+import { ForgotPasswordConnector } from '../modules/forgotPassword/ForgotPasswordConnector'
+import { ChangePasswordConnector } from '../modules/changePassword/ChangePasswordConnector'
+import { TextPage } from '../modules/TextPage'
+import { DemoDelete } from '../modules/listing/delete/DemoDelete'
+import { CreateListingConnector } from '../modules/listing/create/CreateListingConnector'
+import { FindListingsConnector } from '../modules/listing/find/FindListingsConnector'
+import { Logout } from '../modules/logout'
+import { ViewListingConnector } from '../modules/listing/view/ViewListingConnector'
+import { MessageConnector } from '../modules/listing/messages/MessageConnector'
+import { UpdateListingConnector } from '../modules/listing/update/UpdateListingConnector'
 
 export const Routes = () => (
   <BrowserRouter>
@@ -38,8 +39,12 @@ export const Routes = () => (
         component={ViewListingConnector}
       />
       <Route path="/listing/:listingId/chat" component={MessageConnector} />
+      <Route
+        path="/listing/:listingId/update"
+        component={UpdateListingConnector}
+      />
       <AuthRoute path="/create-listing" component={CreateListingConnector} />
       <AuthRoute path="/delete-demo" component={DemoDelete} />
     </Switch>
   </BrowserRouter>
-);
+)

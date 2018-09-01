@@ -14,7 +14,10 @@ export const createMessageMutation = gql`
 `
 
 export interface WithCreateMessage {
-  createMessage: MutationFn<any, CreateMessageMutationVariables>
+  createMessage: MutationFn<
+    CreateMessageMutation,
+    CreateMessageMutationVariables
+  >
 }
 
 interface Props {

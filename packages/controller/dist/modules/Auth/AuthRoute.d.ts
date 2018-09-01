@@ -7,5 +7,5 @@ export declare class C extends React.PureComponent<ChildProps<Props, MeQuery>> {
     renderRoute: (routeProps: RouteComponentProps<{}, import("react-router").StaticContext>) => JSX.Element | null;
     render(): JSX.Element;
 }
-export declare const AuthRoute: React.ComponentClass<RouteProps, React.ComponentState>;
+export declare const AuthRoute: import("react").ComponentClass<RouteProps, import("react").ComponentState>;
 export {};
