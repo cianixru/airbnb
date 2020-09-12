@@ -57,7 +57,7 @@
     "graphql-yoga": "^1.16.1",
     "ioredis": "^4.0.0",
     "merge-graphql-schemas": "^1.5.1",
-    "node-fetch": "^2.1.2",
+    "node-fetch": "^2.6.1",
     "nodemailer": "^4.6.8",
     "pg": "^7.4.1",
     "rate-limit-redis": "^1.4.0",
