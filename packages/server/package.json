@@ -47,7 +47,7 @@
     "express-rate-limit": "^3.0.2",
     "express-session": "^1.15.6",
     "faker": "^4.1.0",
-    "glob": "^7.1.2",
+    "glob": "^9.0.0",
     "graphql": "^0.13.2",
     "graphql-import": "^0.6.0",
     "graphql-middleware": "^1.6.6",
